@@ -40,7 +40,15 @@ const ItemCtrl = (function() {
 		getItems: () => {
 			return data.items;
 		},
-		addItem: (name, calories) => {},
+		addItem: (name, calories) => {
+			let ID;
+			// Create ID
+			if (data.items.length > 0) {
+				ID = data.items[data.items.length - 1].id + 1;
+			} else {
+				ID = 0;
+			}
+		},
 		logData: () => {
 			return data;
 		}
