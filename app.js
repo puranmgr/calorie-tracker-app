@@ -49,7 +49,8 @@ const ItemCtrl = (function() {
 // UI Controller
 const UICtrl = (function() {
 	const UISelectors = {
-		itemList: '#item-list'
+		itemList: '#item-list',
+		addBtn: '.add-btn'
 	};
 	// Public method
 	return {
@@ -65,12 +66,30 @@ const UICtrl = (function() {
 
 			// Insert list items
 			document.querySelector(UISelectors.itemList).innerHTML = html;
+		},
+
+		getSelectors: () => {
+			return UISelectors;
 		}
 	};
 })();
 
 // App Controller
 const App = (function(ItemCtrl, UICtrl) {
+	// Load event listeners
+	const loadEventListeners = () => {
+		// Get UI Selectors
+		const UISelectors = UICtrl.getSelectors();
+
+		// Add item event
+		document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
+	};
+
+	// Add item submit
+	const itemAddSubmit = (e) => {
+		console.log('Add');
+		e.preventDefault();
+	};
 	// Public methods
 	return {
 		init: () => {
@@ -79,6 +98,9 @@ const App = (function(ItemCtrl, UICtrl) {
 
 			// Populate list with items
 			UICtrl.populateItemList(items);
+
+			// Load event listeners
+			loadEventListeners();
 		}
 	};
 })(ItemCtrl, UICtrl);
