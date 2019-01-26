@@ -40,6 +40,7 @@ const ItemCtrl = (function() {
 		getItems: () => {
 			return data.items;
 		},
+		addItem: (name, calories) => {},
 		logData: () => {
 			return data;
 		}
@@ -99,7 +100,8 @@ const App = (function(ItemCtrl, UICtrl) {
 
 		// Check for name and calorie input
 		if (input.name !== '' && input.calories !== '') {
-			console.log(123);
+			// Add item
+			const newItem = ItemCtrl.addItem(input.name, input.calories);
 		}
 		e.preventDefault();
 	};
