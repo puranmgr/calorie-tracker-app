@@ -1,9 +1,9 @@
 // Storage Controller
 
 // Item Controller
-const ItemCtrl = (function() {
+const ItemCtrl = (function () {
 	// Item Constructor
-	const Item = function(id, name, calories) {
+	const Item = function (id, name, calories) {
 		this.id = id;
 		this.name = name;
 		this.calories = calories;
@@ -12,23 +12,23 @@ const ItemCtrl = (function() {
 	// Data Structure / State
 	const data = {
 		items: [
-			{
-				id: 0,
-				name: 'Bread with Jam',
-				calories: 270
-			},
+			// {
+			// 	id: 0,
+			// 	name: 'Bread with Jam',
+			// 	calories: 270
+			// },
 
-			{
-				id: 1,
-				name: 'Meatball Pasta',
-				calories: 800
-			},
+			// {
+			// 	id: 1,
+			// 	name: 'Meatball Pasta',
+			// 	calories: 800
+			// },
 
-			{
-				id: 2,
-				name: 'Chocolate Protein shake',
-				calories: 100
-			}
+			// {
+			// 	id: 2,
+			// 	name: 'Chocolate Protein shake',
+			// 	calories: 100
+			// }
 		],
 
 		currentItem: null,
@@ -67,7 +67,7 @@ const ItemCtrl = (function() {
 })();
 
 // UI Controller
-const UICtrl = (function() {
+const UICtrl = (function () {
 	const UISelectors = {
 		itemList: '#item-list',
 		addBtn: '.add-btn',
@@ -97,6 +97,8 @@ const UICtrl = (function() {
 		},
 
 		addListItem: (item) => {
+			// Show the list 
+			document.querySelector(UISelectors.itemList).style.display = 'block';
 			// Create li element
 			const li = document.createElement('li');
 			// Add class
@@ -113,6 +115,9 @@ const UICtrl = (function() {
 			document.querySelector(UISelectors.itemNameInput).value = '';
 			document.querySelector(UISelectors.itemCaloriesInput).value = '';
 		},
+		hideList: () => {
+			document.querySelector(UISelectors.itemList).style.display = 'none';
+		},
 		getSelectors: () => {
 			return UISelectors;
 		}
@@ -120,7 +125,7 @@ const UICtrl = (function() {
 })();
 
 // App Controller
-const App = (function(ItemCtrl, UICtrl) {
+const App = (function (ItemCtrl, UICtrl) {
 	// Load event listeners
 	const loadEventListeners = () => {
 		// Get UI Selectors
@@ -153,8 +158,13 @@ const App = (function(ItemCtrl, UICtrl) {
 			// Fetch items from data structure
 			const items = ItemCtrl.getItems();
 
-			// Populate list with items
-			UICtrl.populateItemList(items);
+			// Check if any items 
+			if (items.length === 0) {
+				UICtrl.hideList();
+			} else {
+				// Populate list with items
+				UICtrl.populateItemList(items);
+			}
 
 			// Load event listeners
 			loadEventListeners();
