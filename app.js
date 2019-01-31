@@ -375,6 +375,9 @@ const App = (function(ItemCtrl, UICtrl) {
 
 		// Remove from UI
 		UICtrl.removeItems();
+
+		// Hide UL
+		UICtrl.hideList();
 	};
 	// Public methods
 	return {
