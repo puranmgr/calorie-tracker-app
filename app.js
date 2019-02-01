@@ -1,9 +1,9 @@
 // Storage Controller
 
 // Item Controller
-const ItemCtrl = (function() {
+const ItemCtrl = (() => {
 	// Item Constructor
-	const Item = function(id, name, calories) {
+	const Item = function (id, name, calories) {
 		this.id = id;
 		this.name = name;
 		this.calories = calories;
@@ -123,7 +123,7 @@ const ItemCtrl = (function() {
 })();
 
 // UI Controller
-const UICtrl = (function() {
+const UICtrl = (function () {
 	const UISelectors = {
 		itemList: '#item-list',
 		listItems: '#item-list li',
@@ -242,7 +242,7 @@ const UICtrl = (function() {
 })();
 
 // App Controller
-const App = (function(ItemCtrl, UICtrl) {
+const App = (function (ItemCtrl, UICtrl) {
 	// Load event listeners
 	const loadEventListeners = () => {
 		// Get UI Selectors
