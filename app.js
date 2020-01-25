@@ -9,23 +9,7 @@ const ItemCtrl = (() => {
 
 	// Data Structure / State
 	const data = {
-		items: [
-			// {
-			// 	id: 0,
-			// 	name: 'Bread with Jam',
-			// 	calories: 270
-			// },
-			// {
-			// 	id: 1,
-			// 	name: 'Meatball Pasta',
-			// 	calories: 800
-			// },
-			// {
-			// 	id: 2,
-			// 	name: 'Chocolate Protein shake',
-			// 	calories: 100
-			// }
-		],
+		items: [],
 
 		currentItem: null,
 		totalCalories: 0
